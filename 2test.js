@@ -329,34 +329,34 @@ console.log(`设定总珠子数（密度=1）: ${targetBeadCount}`);
 let currentBeadCount = allAtoms.length;
 console.log(`当前总珠子数（包括反离子）: ${currentBeadCount}`);
 
-let numWaterBeads = targetBeadCount - currentBeadCount;
+// let numWaterBeads = targetBeadCount - currentBeadCount;
 
-const waterType = 6; // 假设水珠子的类型编号为6
+// const waterType = 6; // 假设水珠子的类型编号为6
 
-if (numWaterBeads > 0) {
-    console.log(`添加 ${numWaterBeads} 个类型 ${waterType} 的水珠子，以达到珠子密度为1`);
+// if (numWaterBeads > 0) {
+//     console.log(`添加 ${numWaterBeads} 个类型 ${waterType} 的水珠子，以达到珠子密度为1`);
 
-    // 添加水珠子
-    for (let i = 0; i < numWaterBeads; i++) {
-        let pos = generateRandomPosition(sys[0]);
-        allAtoms.push({
-            id: currentAtomID,
-            mol: nm,
-            type: waterType,
-            charge: 0,
-            x: pos[0],
-            y: pos[1],
-            z: pos[2]
-        });
-        currentAtomID++;
-        nm++;
-    }
-} else {
-    console.log(`当前珠子数已达到或超过 ${targetBeadCount}，无需添加水珠子。`);
-}
+//     // 添加水珠子
+//     for (let i = 0; i < numWaterBeads; i++) {
+//         let pos = generateRandomPosition(sys[0]);
+//         allAtoms.push({
+//             id: currentAtomID,
+//             mol: nm,
+//             type: waterType,
+//             charge: 0,
+//             x: pos[0],
+//             y: pos[1],
+//             z: pos[2]
+//         });
+//         currentAtomID++;
+//         nm++;
+//     }
+// } else {
+//     console.log(`当前珠子数已达到或超过 ${targetBeadCount}，无需添加水珠子。`);
+// }
 
 // 更新最大原子类型编号
-let maxatyp = Math.max(counterionType, waterType, ...sys.flatMap(e => e.segt));
+let maxatyp = Math.max(counterionType, /* waterType, */ ...sys.flatMap(e => e.segt));
 
 // 写入到文件
 const fn = fs.createWriteStream('data.out', { flags: 'w' });
